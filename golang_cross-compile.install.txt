@@ -1,0 +1,24 @@
+# Download go package for Artix/Arch Linux host system
+sudo pacman -Sy go
+
+# Clone go sources and checkout prefered  version:
+git clone https://github.com/golang/go go-source
+cd go-source
+git checkout go1.18.2
+
+# build cross-compiler
+cd src
+GOOS=linux GOARCH=mipsle GOROOT_BOOTSTRAP=/usr/lib/go ./make.bash
+GOOS=linux GOARCH=arm GOROOT_BOOTSTRAP=/usr/lib/go ./make.bash
+
+# set environment variables
+echo "export GOPATH=$HOME/go-packages" >> ~/.bashrc
+echo "export PATH=$HOME/go-source/bin:$PATH" >> ~/.bashrc
+echo "export PATH=$HOME/go-packages/bin:$PATH" >> ~/.bashrc
+source ~/.bashrc
+
+#Test of cross compiler
+mkdir -p $HOME/go-packages/src/hello
+cd  $HOME/go-packages/src/hello
+GOOS=linux GOARCH=mipsle go build -o hello.mipsel hello.go
+GOOS=linux   GOARCH=arm go build -o hello.arm hello.go

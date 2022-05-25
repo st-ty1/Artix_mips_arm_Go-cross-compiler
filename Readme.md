@@ -1,9 +1,10 @@
-Based on https://www.fedux.org/articles/bootstrapping-go.html#ref1
- on Artix and Without involving docker. 
+Based on https://www.fedux.org/articles/bootstrapping-go.html#ref1 
+but on Artix and Without involving docker. 
 
-Will create cross-compilers running on Artix/Arch Linux with go version 1.18.2 .
+Creates cross-compilers running on Artix/Arch Linux with go version 1.18.2 .
 
-Coning soon.
+How-to in golang_cross-compile.install.txt .
+
 
 BR
 st-ty1
